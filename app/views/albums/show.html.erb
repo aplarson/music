@@ -3,7 +3,7 @@
 <ol>
   <% @album.tracks.each do |track| %>
     <li>
-      <%= track.name %>
+      <a href="<%= track_url(track) %>"><%= track.name %></a>
     </li>
   <% end %>
 </ol>

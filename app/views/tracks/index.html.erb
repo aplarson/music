@@ -1,0 +1,8 @@
+<h1>Our Tracks!</h1>
+
+<% @tracks.each do |track| %>
+  <li>
+    <a href="<%= track_url(track) %>"><%= track.name %></a>
+    <%= link_to "Delete", track_url(track), method: :delete %>
+  </li>
+<% end %>
