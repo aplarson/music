@@ -44,7 +44,6 @@ class User < ActiveRecord::Base
 
   def reset_session_token!
   	self.session_token = SecureRandom.urlsafe_base64
-  	session[:session_token] = nil
   	self.save!
   end
 end

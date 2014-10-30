@@ -1,11 +1,11 @@
-<h1>Sign up!</h1>
+<h1>Log in!</h1>
 
-<form action="<%= users_url %>" method="POST" >
+<form action="<%= session_url %>" method="POST" >
   <input type="hidden"
          name="authenticity_token"
          value="<%= form_authenticity_token %>">
   <label for="user_email">Email</label>
-  <input type="text" name="user[email]" value=<%= @user.email %> >
+  <input type="text" name="user[email]" >
 
   <label for="user_password">Password</label>
   <input type="password" name="user[password]" >
@@ -14,5 +14,5 @@
 </form>
 
 <div>
-  Already registered? <a href="<%= new_session_url %>">Sign up!</a>
+  Not registered? <a href="<%= new_user_url %>">Sign up!</a>
 </div>

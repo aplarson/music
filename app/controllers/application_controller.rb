@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   def current_user
@@ -10,4 +8,6 @@ class ApplicationController < ActionController::Base
   def user_params
   	params.require(:user).permit([:email, :password])
   end
+
+  helper_method :current_user
 end
