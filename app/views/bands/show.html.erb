@@ -1,0 +1,7 @@
+<h1><%= @band.name %></h1>
+
+<% @band.albums.each do |album| %>
+  <li>
+    <a href="<%= album_url(album) %>"><%= album.name %></a>
+  </li>
+<% end %>

@@ -1,0 +1,22 @@
+<% if @band.persisted? %>
+  <% action = band_url(@band) %>
+  <% button_text = "Edit band" %>
+<% else %>
+  <% action = bands_url %>
+  <% button_text = "Add band!" %>
+<% end %>
+
+
+<form action="<%= action %>" method="POST">
+  <% if @band.persisted? %>
+    <input type="hidden"
+           name="_method"
+           value="PATCH">
+  <% end %>
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+  <label for="band_name">Band Name</label>
+  <input type="text" name="band[name]" value='<%= @band.name %>'>
+  <input type="submit" value="<%= button_text %>">
+</form>

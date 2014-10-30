@@ -18,6 +18,14 @@
   </form>
 <% end %>
 
+<% if flash[:errors] %>
+  <% flash[:errors].each do |err| %>
+    <li>
+      <%= err %>
+    </li>
+  <% end %>
+<% end %>
+
 <%= yield %>
 
 </body>
