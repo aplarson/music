@@ -3,5 +3,6 @@
 <% @albums.each do |album| %>
   <li>
     <a href="<%= album_url(album)%>"><%= album.name %></a>
+    <%= link_to 'Delete', album, method: :delete %>
   </li>
 <% end %>
