@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]
   def new
   	@user = User.new
   	render :new
@@ -10,7 +11,7 @@ class SessionsController < ApplicationController
     if @user 
       @user.reset_session_token!
       session[:session_token] = @user.session_token
-      redirect_to user_url(@user)
+      redirect_to bands_url
   	else
   	  render :new
   	end
@@ -19,6 +20,6 @@ class SessionsController < ApplicationController
   def destroy
     current_user.reset_session_token!
     session[:session_token] = nil
-    render :new
+    redirect_to new_session_url
   end
 end

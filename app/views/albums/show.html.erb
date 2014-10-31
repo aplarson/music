@@ -1,9 +1,22 @@
 <h1><%= @album.name %></h1>
 
+<h2>
+  A <%= @album.setting.downcase %> album by 
+  <a href="<%= band_url(@album.band_id) %>"><%= @album.band.name %></a>
+</h2>
+
+<h2>Tracks on <%= @album.name %></h2>
 <ol>
   <% @album.tracks.each do |track| %>
     <li>
       <a href="<%= track_url(track) %>"><%= track.name %></a>
+      <%= link_to "Delete", track_url(track), method: :delete %>
     </li>
   <% end %>
 </ol>
+
+<%= link_to "Create a track for #{@album.name}", new_album_track_url(@album), method: :get %>
+
+<%= link_to "Delete #{@album.name}", album_url(@album), method: :delete %>
+<%= link_to "Edit #{@album.name}", edit_album_url(@album), method: :get %>
+<%= link_to "All albums", albums_url, method: :get %>

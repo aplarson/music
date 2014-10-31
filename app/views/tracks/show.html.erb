@@ -1,1 +1,13 @@
 <h1><%= @track.name %></h1>
+
+<h2>
+  A <%= @track.variety.downcase if @track.variety == "BONUS" %> track on
+  <a href="<%= album_url(@track.album_id) %>"><%= @track.album.name %></a>
+</h2>
+
+<h2>Lyrics</h2>
+<p><%= @track.lyrics %></p>
+
+<%= link_to "Delete #{@track.name}", track_url(@track), method: :delete %>
+<%= link_to "Edit #{@track.name}", edit_track_url(@track), method: :get %>
+<%= link_to "All tracks", tracks_url, method: :get %>

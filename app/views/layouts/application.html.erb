@@ -16,6 +16,9 @@
          value="<%= form_authenticity_token %>">
   <input type="submit" value="Log out!">
   </form>
+
+  <% else %>
+  <%= link_to 'log in', new_session_url %>
 <% end %>
 
 <% if flash[:errors] %>
