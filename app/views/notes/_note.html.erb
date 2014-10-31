@@ -1,2 +1,5 @@
 <p><%= @note.note_text %></p>
 <h3>By <%= User.find(@note.user_id).email %></h3>
+<% if current_user.id == @note.user_id %>
+  <%= link_to "Delete note", note_url(@note), method: :delete %>
+<% end %>

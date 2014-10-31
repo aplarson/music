@@ -10,8 +10,10 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    Note.destroy(params[:id])
-    redirect_to track_url(params[:track_id])
+    @note = Note.find(params[:id])
+    track = @note.track_id
+    @note.destroy
+    redirect_to track_url(track)
   end
 
   private
