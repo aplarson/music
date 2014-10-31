@@ -6,7 +6,7 @@
 </h2>
 
 <h2>Lyrics</h2>
-<p><%= @track.lyrics %></p>
+<pre><%= ugly_lyrics(@track.lyrics) %></pre>
 
 <h2>Notes about <%= @track.name %></h2>
 <% @track.notes.each do |note| %>

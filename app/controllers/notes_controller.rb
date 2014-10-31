@@ -11,9 +11,13 @@ class NotesController < ApplicationController
 
   def destroy
     @note = Note.find(params[:id])
-    track = @note.track_id
-    @note.destroy
-    redirect_to track_url(track)
+    if current_user.id == @note.user_id
+      track = @note.track_id
+      @note.destroy
+      redirect_to track_url(track)
+    else
+      render text: "You may not alter that asset", status: :forbidden
+    end
   end
 
   private

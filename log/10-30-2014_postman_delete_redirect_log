@@ -1,0 +1,24 @@
+Started DELETE "/notes/3" for 127.0.0.1 at 2014-10-30 21:05:33 -0700
+Processing by NotesController#destroy as */*
+  Parameters: {"authenticity_token"=>"74L+TxGxTyQVz6HuJvb/1OzqiIjYe65V3/hZDkZtIWQ=", "id"=>"3"}
+  [1m[36mUser Load (9.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'T5Kc4UijQHShf2x5f5WqAA' LIMIT 1[0m
+  [1m[35mNote Load (1.0ms)[0m  SELECT  "notes".* FROM "notes"  WHERE "notes"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "notes" WHERE "notes"."id" = $1  [["id", 3]]
+  [1m[36m (12.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/tracks/5
+Completed 302 Found in 40ms (ActiveRecord: 22.9ms)
+
+
+Started DELETE "/tracks/5" for 127.0.0.1 at 2014-10-30 21:05:33 -0700
+Processing by TracksController#destroy as */*
+  Parameters: {"authenticity_token"=>"74L+TxGxTyQVz6HuJvb/1OzqiIjYe65V3/hZDkZtIWQ=", "id"=>"5"}
+  [1m[35mUser Load (6.6ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."session_token" = 'T5Kc4UijQHShf2x5f5WqAA' LIMIT 1
+  [1m[36mTrack Load (5.5ms)[0m  [1mSELECT  "tracks".* FROM "tracks"  WHERE "tracks"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35m (3.5ms)[0m  BEGIN
+  [1m[36mNote Load (2.7ms)[0m  [1mSELECT "notes".* FROM "notes"  WHERE "notes"."track_id" = $1[0m  [["track_id", 5]]
+  [1m[35mSQL (5.2ms)[0m  DELETE FROM "notes" WHERE "notes"."id" = $1  [["id", 4]]
+  [1m[36mSQL (0.9ms)[0m  [1mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 5]]
+  [1m[35m (3.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/tracks
+Completed 302 Found in 47ms (ActiveRecord: 27.7ms)
