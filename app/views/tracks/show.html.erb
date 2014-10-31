@@ -8,6 +8,15 @@
 <h2>Lyrics</h2>
 <p><%= @track.lyrics %></p>
 
+<h2>Notes about <%= @track.name %></h2>
+<% @track.notes.each do |note| %>
+  <% @note = note %>
+  <%= render partial: 'notes/note', note: @note %>
+<% end %>
+
+<h2>Make a note</h2>
+<%= render partial: 'notes/form' %>
+
 <%= link_to "Delete #{@track.name}", track_url(@track), method: :delete %>
 <%= link_to "Edit #{@track.name}", edit_track_url(@track), method: :get %>
 <%= link_to "All tracks", tracks_url, method: :get %>
